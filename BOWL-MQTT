@@ -1,0 +1,450 @@
+[
+    {
+        "id": "ea2b512400aeec3a",
+        "type": "tab",
+        "label": "BOWL-MQTT",
+        "disabled": false,
+        "info": "",
+        "env": [],
+        "_mcu": {
+            "mcu": false
+        }
+    },
+    {
+        "id": "2c342cf09b3531dd",
+        "type": "ui_button",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "group": "0974327305abc361",
+        "order": 3,
+        "width": "6",
+        "height": "2",
+        "passthru": false,
+        "label": "今すぐ水やり",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "10",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "0177dc788529782c",
+                "1b879e64783081d0"
+            ]
+        ]
+    },
+    {
+        "id": "ab0043200f5b2657",
+        "type": "ui_gauge",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "group": "0974327305abc361",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "水分量",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "diff": false,
+        "className": "",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 450,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "09b02533d13ab59d",
+        "type": "ui_slider",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "label": "水やりレベル",
+        "tooltip": "",
+        "group": "0974327305abc361",
+        "order": 5,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 480,
+        "y": 400,
+        "wires": [
+            [
+                "92e78d05e97ca89c",
+                "011c42d9aede110b"
+            ]
+        ]
+    },
+    {
+        "id": "0177dc788529782c",
+        "type": "mqtt out",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "topic": "SALZminiMQTT/WN",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a533458f1c124dfa",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 720,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a7b34fd7c0323172",
+        "type": "mqtt in",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "topic": "SALZminiMQTT/WL",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a533458f1c124dfa",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "ab0043200f5b2657",
+                "9318f3e7419177b8"
+            ]
+        ]
+    },
+    {
+        "id": "a3a98687b4afaff5",
+        "type": "comment",
+        "z": "ea2b512400aeec3a",
+        "name": "受信コマンド",
+        "info": "WL:水分量％\n",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "92e78d05e97ca89c",
+        "type": "mqtt out",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "topic": "SALZminiMQTT/WN",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a533458f1c124dfa",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 720,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1b879e64783081d0",
+        "type": "debug",
+        "z": "ea2b512400aeec3a",
+        "name": "WN:今すぐ水やり",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 710,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "011c42d9aede110b",
+        "type": "debug",
+        "z": "ea2b512400aeec3a",
+        "name": "WL:水やりレベル設定",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 720,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9817b4204ada037c",
+        "type": "inject",
+        "z": "ea2b512400aeec3a",
+        "name": "最初だけ",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "581c1294a7c37b9d",
+                "92eaef5724116193"
+            ]
+        ]
+    },
+    {
+        "id": "581c1294a7c37b9d",
+        "type": "template",
+        "z": "ea2b512400aeec3a",
+        "name": "30",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "30",
+        "output": "str",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 310,
+        "y": 400,
+        "wires": [
+            [
+                "09b02533d13ab59d"
+            ]
+        ]
+    },
+    {
+        "id": "9318f3e7419177b8",
+        "type": "ui_chart",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "group": "0974327305abc361",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "水分量",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "72",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 450,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fcefe586870c2a45",
+        "type": "ui_text",
+        "z": "ea2b512400aeec3a",
+        "group": "0974327305abc361",
+        "order": 2,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "ポンプの状態",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "0ea32ab576260801",
+        "type": "mqtt in",
+        "z": "ea2b512400aeec3a",
+        "name": "",
+        "topic": "SALZminiMQTT/PS",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a533458f1c124dfa",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "fcefe586870c2a45"
+            ]
+        ]
+    },
+    {
+        "id": "92eaef5724116193",
+        "type": "template",
+        "z": "ea2b512400aeec3a",
+        "name": "0",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "0",
+        "output": "str",
+        "_mcu": {
+            "mcu": false
+        },
+        "x": 310,
+        "y": 360,
+        "wires": [
+            [
+                "fcefe586870c2a45"
+            ]
+        ]
+    },
+    {
+        "id": "0974327305abc361",
+        "type": "ui_group",
+        "name": "BOWL-SALZminiMQTTReceiver",
+        "tab": "838ce187a484860d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a533458f1c124dfa",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "838ce187a484860d",
+        "type": "ui_tab",
+        "name": "BOWL",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
